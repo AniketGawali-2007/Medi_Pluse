@@ -49,7 +49,9 @@
 }
 
 /* --- Global Reset & Accessibility --- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -79,11 +81,15 @@ a {
   color: var(--primary);
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: underline;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font: inherit;
 }
 
@@ -323,10 +329,16 @@ button, input, select, textarea {
   background-color: var(--primary);
   color: white;
 }
+
 .btn-primary:hover {
   background-color: var(--primary-hover);
   color: white;
   text-decoration: none;
+}
+
+.btn-FillDoctor {
+  background-color: rgb(157, 255, 0);
+  color: #0f172a;
 }
 
 .btn-secondary {
@@ -334,6 +346,7 @@ button, input, select, textarea {
   color: var(--text-primary);
   border-color: var(--border-color);
 }
+
 .btn-secondary:hover {
   background-color: var(--border-color);
   text-decoration: none;
@@ -344,6 +357,7 @@ button, input, select, textarea {
   color: var(--primary);
   border-color: var(--primary);
 }
+
 .btn-outline:hover {
   background-color: var(--primary-light);
   text-decoration: none;
@@ -354,6 +368,7 @@ button, input, select, textarea {
   color: var(--danger);
   border-color: #fca5a5;
 }
+
 .btn-danger:hover {
   background-color: var(--danger);
   color: white;
@@ -380,7 +395,9 @@ button, input, select, textarea {
   text-transform: capitalize;
 }
 
-.badge-confirmed, .badge-verified, .badge-active {
+.badge-confirmed,
+.badge-verified,
+.badge-active {
   background-color: var(--success-bg);
   color: var(--success);
 }
@@ -390,12 +407,14 @@ button, input, select, textarea {
   color: var(--warning);
 }
 
-.badge-cancelled, .badge-rejected {
+.badge-cancelled,
+.badge-rejected {
   background-color: var(--danger-bg);
   color: var(--danger);
 }
 
-.badge-completed, .badge-info {
+.badge-completed,
+.badge-info {
   background-color: var(--info-bg);
   color: var(--info);
 }
@@ -435,11 +454,13 @@ button, input, select, textarea {
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
+
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
+
 .grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -468,10 +489,25 @@ button, input, select, textarea {
   font-size: 1.25rem;
 }
 
-.stat-icon.blue { background-color: var(--primary-light); color: var(--primary-dark); }
-.stat-icon.green { background-color: var(--success-bg); color: var(--success); }
-.stat-icon.amber { background-color: var(--warning-bg); color: var(--warning); }
-.stat-icon.teal { background-color: var(--accent-light); color: var(--accent-dark); }
+.stat-icon.blue {
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.stat-icon.green {
+  background-color: var(--success-bg);
+  color: var(--success);
+}
+
+.stat-icon.amber {
+  background-color: var(--warning-bg);
+  color: var(--warning);
+}
+
+.stat-icon.teal {
+  background-color: var(--accent-light);
+  color: var(--accent-dark);
+}
 
 .stat-info h3 {
   font-size: 1.5rem;
@@ -608,8 +644,15 @@ button, input, select, textarea {
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(1rem); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Modal Window */
@@ -781,8 +824,13 @@ button, input, select, textarea {
 
 /* --- Responsive Media Queries --- */
 @media (max-width: 992px) {
-  .grid-4 { grid-template-columns: repeat(2, 1fr); }
-  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
@@ -802,7 +850,9 @@ button, input, select, textarea {
     display: block;
   }
 
-  .grid-4, .grid-3, .grid-2 {
+  .grid-4,
+  .grid-3,
+  .grid-2 {
     grid-template-columns: 1fr;
   }
 

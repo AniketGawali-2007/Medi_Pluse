@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MediPulse Healthcare Portal — Secure and accessible portal for patients and doctors.">
+  <meta name="description"
+    content="MediPulse Healthcare Portal — Secure and accessible portal for patients and doctors.">
   <title>MediPulse — Healthcare Portal</title>
-  
+
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
-  
+
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body class="landing-body">
 
   <main class="auth-container">
@@ -22,12 +25,13 @@
           <div class="brand-icon">
             <i data-lucide="activity"></i>
           </div>
-          <span style="font-size: 1.5rem; letter-spacing: -0.02em;">MediPulse</span>
+          <span style="font-size: 1.5rem; letter-spacing: -0.02em; color:red;">MediPulse</span>
         </div>
 
         <div class="auth-hero-title">
           <h2>Streamlined Healthcare for Everyone</h2>
-          <p>Connect seamlessly with your doctors, view health records, track active prescriptions, and manage upcoming appointments in one place.</p>
+          <p>Connect seamlessly with your doctors, view health records, track active prescriptions, and manage upcoming
+            appointments in one place.</p>
         </div>
       </div>
 
@@ -55,7 +59,8 @@
     <section class="auth-form-side" aria-label="Sign In Form">
       <div style="margin-bottom: 1.5rem;">
         <h1 style="font-size: 1.75rem; font-weight: 700; color: var(--text-primary);">Welcome Back</h1>
-        <p style="color: var(--text-secondary); font-size: 0.95rem;">Select your role to access your personalized portal.</p>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">Select your role to access your personalized
+          portal.</p>
       </div>
 
       <form id="loginForm" novalidate>
@@ -80,17 +85,20 @@
         <!-- Name Input -->
         <div class="form-group">
           <label for="userName" class="form-label">Full Name</label>
-          <input type="text" id="userName" class="form-control" placeholder="e.g. Aarav Patil" required autocomplete="name">
+          <input type="text" id="userName" class="form-control" placeholder="e.g. Aarav Patil" required
+            autocomplete="name">
         </div>
 
         <!-- Email Input -->
         <div class="form-group">
           <label for="userEmail" class="form-label">Email Address</label>
-          <input type="email" id="userEmail" class="form-control" placeholder="e.g. patient@medipulse.org" required autocomplete="email">
+          <input type="email" id="userEmail" class="form-control" placeholder="e.g. patient@medipulse.org" required
+            autocomplete="email">
         </div>
 
         <!-- Error Message Banner -->
-        <div id="loginErrorMsg" class="disclaimer-banner" style="display: none; background-color: var(--danger-bg); border-color: #fca5a5; color: var(--danger);">
+        <div id="loginErrorMsg" class="disclaimer-banner"
+          style="display: none; background-color: var(--danger-bg); border-color: #fca5a5; color: var(--danger);">
           <i data-lucide="alert-circle"></i>
           <span id="loginErrorText">Please fill in all required fields.</span>
         </div>
@@ -102,7 +110,8 @@
 
         <!-- Test Quick Fill Credentials Box -->
         <div class="test-credentials-box">
-          <strong style="display:block; margin-bottom: 0.35rem; color: var(--text-primary);">Quick Demo Auto-Fill:</strong>
+          <strong style="display:block; margin-bottom: 0.35rem; color: var(--text-primary);">Quick Demo
+            Auto-Fill:</strong>
           <div style="display:flex; gap:0.5rem; margin-top: 0.35rem;">
             <button type="button" class="btn btn-secondary btn-sm" id="btnFillPatient">
               <i data-lucide="user"></i> Patient Demo
@@ -151,7 +160,7 @@
 
       patientCard.addEventListener('click', () => selectRole('patient'));
       doctorCard.addEventListener('click', () => selectRole('doctor'));
-      
+
       // Keyboard support
       patientCard.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') selectRole('patient'); });
       doctorCard.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') selectRole('doctor'); });
@@ -202,4 +211,5 @@
     });
   </script>
 </body>
+
 </html>
