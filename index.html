@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MediPulse Healthcare Portal — Secure and accessible portal for patients and doctors.">
+  <title>MediPulse — Healthcare Portal</title>
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="landing-body">
+
+  <main class="auth-container">
+    <!-- Left Hero Banner -->
+    <section class="auth-hero" aria-label="Portal Overview">
+      <div>
+        <div class="brand-logo" style="color: white; margin-bottom: 2rem;">
+          <div class="brand-icon">
+            <i data-lucide="activity"></i>
+          </div>
+          <span style="font-size: 1.5rem; letter-spacing: -0.02em;">MediPulse</span>
+        </div>
+
+        <div class="auth-hero-title">
+          <h2>Streamlined Healthcare for Everyone</h2>
+          <p>Connect seamlessly with your doctors, view health records, track active prescriptions, and manage upcoming appointments in one place.</p>
+        </div>
+      </div>
+
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="feature-icon"><i data-lucide="calendar"></i></div>
+          <span>Instant Appointment Scheduling</span>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i data-lucide="shield-check"></i></div>
+          <span>Secure Medical Records Access</span>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i data-lucide="pill"></i></div>
+          <span>Digital Prescription Tracking</span>
+        </div>
+      </div>
+
+      <p style="font-size: 0.8rem; color: #bae6fd;">
+        &copy; 2026 MediPulse Health Systems. Frontend MVP Demonstration.
+      </p>
+    </section>
+
+    <!-- Right Login Form -->
+    <section class="auth-form-side" aria-label="Sign In Form">
+      <div style="margin-bottom: 1.5rem;">
+        <h1 style="font-size: 1.75rem; font-weight: 700; color: var(--text-primary);">Welcome Back</h1>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">Select your role to access your personalized portal.</p>
+      </div>
+
+      <form id="loginForm" novalidate>
+        <!-- Role Selection -->
+        <div class="form-group">
+          <label class="form-label">Select Portal Role</label>
+          <div class="role-selector" role="radiogroup" aria-label="User Role Selector">
+            <div class="role-card selected" id="rolePatientCard" role="radio" aria-checked="true" tabindex="0">
+              <i data-lucide="user"></i>
+              <span>Patient</span>
+            </div>
+            <div class="role-card" id="roleDoctorCard" role="radio" aria-checked="false" tabindex="0">
+              <i data-lucide="stethoscope"></i>
+              <span>Doctor</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hidden input for selected role -->
+        <input type="hidden" id="selectedRole" value="patient">
+
+        <!-- Name Input -->
+        <div class="form-group">
+          <label for="userName" class="form-label">Full Name</label>
+          <input type="text" id="userName" class="form-control" placeholder="e.g. Aarav Patil" required autocomplete="name">
+        </div>
+
+        <!-- Email Input -->
+        <div class="form-group">
+          <label for="userEmail" class="form-label">Email Address</label>
+          <input type="email" id="userEmail" class="form-control" placeholder="e.g. patient@medipulse.org" required autocomplete="email">
+        </div>
+
+        <!-- Error Message Banner -->
+        <div id="loginErrorMsg" class="disclaimer-banner" style="display: none; background-color: var(--danger-bg); border-color: #fca5a5; color: var(--danger);">
+          <i data-lucide="alert-circle"></i>
+          <span id="loginErrorText">Please fill in all required fields.</span>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-block" style="padding: 0.85rem; font-size: 1rem;">
+          <i data-lucide="log-in"></i> Sign In to Portal
+        </button>
+
+        <!-- Test Quick Fill Credentials Box -->
+        <div class="test-credentials-box">
+          <strong style="display:block; margin-bottom: 0.35rem; color: var(--text-primary);">Quick Demo Auto-Fill:</strong>
+          <div style="display:flex; gap:0.5rem; margin-top: 0.35rem;">
+            <button type="button" class="btn btn-secondary btn-sm" id="btnFillPatient">
+              <i data-lucide="user"></i> Patient Demo
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" id="btnFillDoctor">
+              <i data-lucide="stethoscope"></i> Doctor Demo
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- JavaScript Dependencies -->
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Redirect if already logged in
+      redirectIfAuthenticated();
+
+      const patientCard = document.getElementById('rolePatientCard');
+      const doctorCard = document.getElementById('roleDoctorCard');
+      const selectedRoleInput = document.getElementById('selectedRole');
+      const form = document.getElementById('loginForm');
+      const nameInput = document.getElementById('userName');
+      const emailInput = document.getElementById('userEmail');
+      const errorBanner = document.getElementById('loginErrorMsg');
+      const errorText = document.getElementById('loginErrorText');
+
+      // Role switcher behavior
+      function selectRole(role) {
+        selectedRoleInput.value = role;
+        if (role === 'patient') {
+          patientCard.classList.add('selected');
+          patientCard.setAttribute('aria-checked', 'true');
+          doctorCard.classList.remove('selected');
+          doctorCard.setAttribute('aria-checked', 'false');
+        } else {
+          doctorCard.classList.add('selected');
+          doctorCard.setAttribute('aria-checked', 'true');
+          patientCard.classList.remove('selected');
+          patientCard.setAttribute('aria-checked', 'false');
+        }
+      }
+
+      patientCard.addEventListener('click', () => selectRole('patient'));
+      doctorCard.addEventListener('click', () => selectRole('doctor'));
+      
+      // Keyboard support
+      patientCard.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') selectRole('patient'); });
+      doctorCard.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') selectRole('doctor'); });
+
+      // Quick Fill Buttons
+      document.getElementById('btnFillPatient').addEventListener('click', () => {
+        selectRole('patient');
+        nameInput.value = 'Aarav Patil';
+        emailInput.value = 'aarav.patil@example.com';
+      });
+
+      document.getElementById('btnFillDoctor').addEventListener('click', () => {
+        selectRole('doctor');
+        nameInput.value = 'Dr. Priya Sharma';
+        emailInput.value = 'dr.priya@citycarehospital.com';
+      });
+
+      // Form submission validation
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        errorBanner.style.display = 'none';
+
+        const role = selectedRoleInput.value;
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+
+        if (!name || !email) {
+          errorText.textContent = 'Please provide both your name and email address to continue.';
+          errorBanner.style.display = 'flex';
+          return;
+        }
+
+        // Basic email syntax check
+        if (!email.includes('@') || !email.includes('.')) {
+          errorText.textContent = 'Please enter a valid email address.';
+          errorBanner.style.display = 'flex';
+          return;
+        }
+
+        try {
+          // Perform authentication simulation
+          loginUser(role, name, email);
+        } catch (err) {
+          errorText.textContent = err.message || 'Authentication error occurred.';
+          errorBanner.style.display = 'flex';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
