@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: #f1f5f9;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 500px;
+
+    background: white;
+    padding: 30px;
+
+    border-radius: 16px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.login-header h1 {
+    color: #0f766e;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.login-header p {
+    color: #64748b;
+}
+
+.role-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+
+    margin-bottom: 25px;
+}
+
+.role-btn {
+    padding: 12px 8px;
+
+    border: 1px solid #cbd5e1;
+    background: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+.role-btn:hover {
+    border-color: #0f766e;
+}
+
+.role-btn.active {
+    background: #0f766e;
+    color: white;
+    border-color: #0f766e;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-form h2 {
+    margin-bottom: 10px;
+    color: #1e293b;
+}
+
+.login-form label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.login-form input,
+.login-form select {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+
+    font-size: 15px;
+}
+
+.login-form input:focus,
+.login-form select:focus {
+    outline: none;
+    border-color: #0f766e;
+}
+
+.submit-btn {
+    margin-top: 15px;
+
+    padding: 13px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #0f766e;
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #115e59;
+}
+
+.verification-note {
+    margin-top: 8px;
+
+    font-size: 13px;
+    text-align: center;
+
+    color: #64748b;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 500px) {
+
+    .login-container {
+        padding: 20px;
+    }
+
+    .role-buttons {
+        grid-template-columns: 1fr;
+    }
+}
